@@ -10,3 +10,4 @@ AllCops:
   Exclude:
     - 'Guardfile'
     - 'Gemfile'
+  TargetRubyVersion: 2.3
