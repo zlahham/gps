@@ -16,9 +16,7 @@ class GPS
   end
 
   def find_distance(start, finish)
-    if start == 'A' && finish == 'B'
-      5
-    end
+    lookup_route(start, finish).last
   end
 
   def lookup_route(start, finish)

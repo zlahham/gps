@@ -4,6 +4,24 @@ This a simple route calculation program. The program guides a driver around a ne
 
 This ultimately calculates the length of a given route, the number of possible routes between two points, and the shortest route between two points.
 
+User Stories
+------------
+```
+
+As a regular GPS user
+I would like to receive the distance of my journey
+So that I can time my journey properly
+
+As a regular GPS user
+I would like to receive the number of possible routes for my given journey
+So that I can make an optimal choice beforehand
+
+As a regular GPS user
+I would like to find the shortest route for a given journey
+So that I can save some time on travel
+
+```
+
 Installation
 ------------
 
