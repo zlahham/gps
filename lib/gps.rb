@@ -12,19 +12,27 @@ class GPS
     @current_route = {}
   end
 
-  def find_distance(start, finish)
-    if route_exists?(start, finish) == false
-      false
-    else
-      lookup_route(start, finish).last
-    end
+  def find_distance(start, jtwo=nil, jthree=nil, jfour=nil, jfive=nil)
+    total = 0
+
+    total += lookup_route(start, jtwo).last   if route_exists?(start, jtwo)
+    total += lookup_route(jtwo, jthree).last  if route_exists?(jtwo, jthree) && jthree != nil
+    total += lookup_route(jthree, jfour).last if route_exists?(jthree, jfour) && jfour != nil
+    total += lookup_route(jfour, jfive).last  if route_exists?(jfour, jfive) && jfive != nil
+    total
   end
 
   def lookup_route(start, finish)
-    ROUTES.select { |key, _value| key == "#{start}#{finish}".to_sym }.flatten
+    ROUTES.select do |key, _value|
+      key == "#{start}#{finish}".to_sym
+    end.flatten
   end
 
   def route_exists?(start, finish)
-    lookup_route(start, finish) == [] ? false : true
+    if lookup_route(start, finish) == []
+      false
+    else
+      true
+    end
   end
 end

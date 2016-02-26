@@ -11,10 +11,11 @@ describe GPS do
 
   context '#find_distance' do
     it 'reports back the distance from start to end' do
-      expect(subject.find_distance('A', 'B')).to eq 5
+      expect(subject.find_distance('A', 'B')).to eq routes[:AB]
     end
+
     it 'does not report distances for invalid entries' do
-      expect(subject.find_distance('X', 'U')).to be false
+      expect(subject.find_distance('X', 'U')).to be 0
     end
   end
 
@@ -37,4 +38,5 @@ describe GPS do
       expect(subject.route_exists?('A', 'C')).to be false
     end
   end
+
 end
