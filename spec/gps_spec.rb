@@ -14,13 +14,17 @@ describe GPS do
       expect(subject.find_distance('A', 'B')).to eq 5
     end
     it 'does not report distances for invalid entries' do
-      expect(subject.find_distance('X', 'U')).to eq nil
+      expect(subject.find_distance('X', 'U')).to be false
     end
   end
 
   context '#lookup_route' do
     it 'reports back the existance of a valid route' do
       expect(subject.lookup_route('A', 'B')).to eq routes.first
+    end
+
+    it 'does not report invalid routes' do
+      expect(subject.lookup_route('C', 'Q')).to be_empty
     end
   end
 
