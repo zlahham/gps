@@ -9,17 +9,12 @@ class GPS
   JUNCTIONS = %w(A B C D E).freeze
 
   def initialize
-    @current_route = {}
+    @total_distance = 0
   end
 
-  def find_distance(start, jtwo=nil, jthree=nil, jfour=nil, jfive=nil)
-    total = 0
-
-    total += lookup_route(start, jtwo).last   if route_exists?(start, jtwo)
-    total += lookup_route(jtwo, jthree).last  if route_exists?(jtwo, jthree) && jthree != nil
-    total += lookup_route(jthree, jfour).last if route_exists?(jthree, jfour) && jfour != nil
-    total += lookup_route(jfour, jfive).last  if route_exists?(jfour, jfive) && jfive != nil
-    total
+  def find_distance(*junctions)
+    @total_distance = 0
+    junction_cycle(junctions)
   end
 
   def lookup_route(start, finish)
@@ -33,6 +28,20 @@ class GPS
       false
     else
       true
+    end
+  end
+
+  def junction_cycle(junctions)
+    if junctions.length > 1
+      if route_exists?(junctions[0], junctions[1])
+        @total_distance += lookup_route(junctions[0], junctions[1]).last
+      else
+        return 'NO SUCH ROUTE'
+      end
+      junctions.delete_at(0)
+      junction_cycle(junctions)
+    else
+      @total_distance
     end
   end
 end

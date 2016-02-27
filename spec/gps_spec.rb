@@ -15,7 +15,7 @@ describe GPS do
     end
 
     it 'does not report distances for invalid entries' do
-      expect(subject.find_distance('X', 'U')).to be 0
+      expect(subject.find_distance('X', 'U')).to eq 'NO SUCH ROUTE'
     end
   end
 
