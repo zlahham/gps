@@ -10,12 +10,25 @@ describe GPS do
   end
 
   context '#find_distance' do
-    it 'reports back the distance from start to end' do
-      expect(subject.find_distance('A', 'B')).to eq routes[:AB]
+    context 'two junctions' do
+      it 'reports back the distance from start to end' do
+        expect(subject.find_distance('A', 'B')).to eq routes[:AB]
+      end
+
+      it 'does not report distances for invalid entries' do
+        expect(subject.find_distance('X', 'U')).to eq 'NO SUCH ROUTE'
+      end
     end
 
-    it 'does not report distances for invalid entries' do
-      expect(subject.find_distance('X', 'U')).to eq 'NO SUCH ROUTE'
+    context 'more than two junctions' do
+      it 'reports back the distance from start to end' do
+        expect(subject.find_distance('A', 'E', 'B', 'C', 'D')).to eq 21
+      end
+
+      it 'doesnt respond to broken routes' do
+        expect(subject.find_distance('A', 'E', 'D')).to eq 'NO SUCH ROUTE'
+      end
+
     end
   end
 
@@ -38,5 +51,4 @@ describe GPS do
       expect(subject.route_exists?('A', 'C')).to be false
     end
   end
-
 end

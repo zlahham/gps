@@ -24,11 +24,7 @@ class GPS
   end
 
   def route_exists?(start, finish)
-    if lookup_route(start, finish) == []
-      false
-    else
-      true
-    end
+    lookup_route(start, finish) == [] ? false : true
   end
 
   def junction_cycle(junctions)
