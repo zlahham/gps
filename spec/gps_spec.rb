@@ -28,7 +28,6 @@ describe GPS do
       it 'doesnt respond to broken routes' do
         expect(subject.find_distance('A', 'E', 'D')).to eq 'NO SUCH ROUTE'
       end
-
     end
   end
 
@@ -49,6 +48,16 @@ describe GPS do
 
     it 'does not validate the non-presence of a route' do
       expect(subject.route_exists?('A', 'C')).to be false
+    end
+  end
+
+  context '#possible_routes' do
+    xit 'finds the number of routes between the same junction with restrictions' do
+      expect(subject.possible_routes('C', 'C')).to eq 2
+    end
+
+    xit 'finds the num of routes between different junctions with restrictions' do
+      expect(subject.possible_routes('A', 'C')).to eq 3
     end
   end
 end
