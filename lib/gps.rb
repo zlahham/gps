@@ -41,18 +41,4 @@ class GPS
       @total_distance
     end
   end
-
-   # def possible_routes(start, finish, restriction=3)
-     # while true
-       # level_1 = find_outlets(start, routes)
-       # level_2 = []
-       # level_1.each |key, _value| do # {CD, CE}
-         # level_2 << find_outlets(key[0], ROUTES)
-       # end
-     # end
-   # end
-
-   # def find_outlets(junction, routes)
-     # routes.select { |key, _value| key[0] == junction }
-   # end
 end
