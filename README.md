@@ -24,9 +24,32 @@ So that I can save some time on travel
 
 Installation
 ------------
+**You must have Ruby installed to run this program.
 
+```
+
+git clone https://github.com/zlahham/gps.git
+
+cd gps
+
+gem install bundler (If you don't have it already)
+
+bundle install
+
+ruby lib/gps.rb
+
+```
 
 Testing
 -------
 
+```
+
+cd gps
+
+bundle install
+
+rspec
+
+```
 

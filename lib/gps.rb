@@ -42,3 +42,20 @@ class GPS
     end
   end
 end
+
+gps = GPS.new
+
+puts "Distance A-B-C:"
+puts gps.find_distance('A', 'B', 'C')
+
+puts "Distance A-D:"
+puts gps.find_distance('A', 'D')
+
+puts "Distance A-D-C:"
+puts gps.find_distance('A', 'D', 'C')
+
+puts "Distance A-E-B-C-D:"
+puts gps.find_distance('A', 'E', 'B', 'C', 'D')
+
+puts "Distance A-E-D:"
+puts gps.find_distance('A', 'E', 'D')
